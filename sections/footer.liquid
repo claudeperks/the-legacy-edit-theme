@@ -1,258 +1,82 @@
-﻿
-
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div
-  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
->
-  {% liquid
-    assign total_blocks = section.blocks.size
-
-    # Grid layout calculations
-    assign grid_columns = total_blocks | at_most: 4
-
-    # Calculate last row counts using modulo arithmetic
-    # last_row_count = (total_blocks - 1) % N + 1
-    assign last_row_count = total_blocks | minus: 1 | modulo: 4 | plus: 1
-    assign tablet_last_row_count = total_blocks | minus: 1 | modulo: 2 | plus: 1
-
-    # Check if there are orphaned elements (single item in last row)
-    assign has_isolated_grid_item_desktop = false
-    assign has_isolated_grid_item_tablet = false
-
-    if total_blocks > 4 and last_row_count == 1
-      assign has_isolated_grid_item_desktop = true
-    endif
-
-    if total_blocks == 5
-      assign has_isolated_grid_item_tablet = true
-    endif
-  %}
-  <div
-    class="
-      footer-content
-      spacing-style
-      {% if has_isolated_grid_item_desktop %}footer-content--isolated-grid-item-desktop{% endif %}
-      {% if has_isolated_grid_item_tablet %}footer-content--isolated-grid-item-tablet{% endif %}
-    "
-    style="
-      {%  render 'spacing-style', settings: section.settings %}
-      --footer-gap: {{ section.settings.gap }}px;
-      --grid-columns: {{ grid_columns }};
-      --last-row-count: {{ last_row_count }};
-      --tablet-last-row-count: {{ tablet_last_row_count }};
-    "
-  >
-    {% content_for 'blocks' %}
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="site-footer__grid">
+      <div>
+        <p class="site-footer__brand-name">{{ shop.name }}</p>
+        <p class="site-footer__brand-desc">{{ section.settings.brand_desc }}</p>
+        <div class="site-footer__social">
+          {% if section.settings.instagram != blank %}
+            <a href="{{ section.settings.instagram }}" target="_blank" rel="noopener">Instagram</a>
+          {% endif %}
+          {% if section.settings.tiktok != blank %}
+            <a href="{{ section.settings.tiktok }}" target="_blank" rel="noopener">TikTok</a>
+          {% endif %}
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        <div {{ block.shopify_attributes }}>
+          <p class="site-footer__col-title">{{ block.settings.title }}</p>
+          <ul class="site-footer__links">
+            {% if block.settings.link_1_label != blank %}
+              <li><a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_label }}</a></li>
+            {% endif %}
+            {% if block.settings.link_2_label != blank %}
+              <li><a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_label }}</a></li>
+            {% endif %}
+            {% if block.settings.link_3_label != blank %}
+              <li><a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_label }}</a></li>
+            {% endif %}
+            {% if block.settings.link_4_label != blank %}
+              <li><a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_label }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+      <nav class="site-footer__legal">
+        <a href="/policies/privacy-policy">Privacy Policy</a>
+        <a href="/policies/terms-of-service">Terms</a>
+        <a href="/policies/shipping-policy">Shipping</a>
+        <a href="/policies/refund-policy">Returns</a>
+      </nav>
+    </div>
   </div>
-</div>
-
-{% stylesheet %}
-  .footer-content {
-    contain: content;
-    content-visibility: auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--footer-gap);
-    align-items: start;
-  }
-
-  .footer-content .menu__heading__default {
-    font-weight: var(--font-heading--weight);
-  }
-
-  @media screen and (min-width: 750px) and (max-width: 989px) {
-    .footer-content {
-      grid-template-columns: repeat(min(var(--grid-columns), 3), 1fr);
-      grid-auto-flow: row;
-    }
-
-    .footer-content[style*='--grid-columns: 4'] {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-content--isolated-grid-item-tablet > :last-child {
-      grid-column: 1 / -1;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .footer-content {
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
-    }
-
-    /* Single item centered */
-    .footer-content[style*='--grid-columns: 1'] {
-      justify-items: center;
-    }
-
-    .footer-content--isolated-grid-item-desktop > :last-child {
-      grid-column: 1 / -1;
-    }
-  }
-{% endstylesheet %}
+</footer>
 
 {% schema %}
 {
-  "name": "t:names.footer",
-  "class": "section-wrapper",
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "brand_desc", "label": "Brand description", "default": "Handcrafted books for the modern collector." },
+    { "type": "text", "id": "instagram", "label": "Instagram URL" },
+    { "type": "text", "id": "tiktok", "label": "TikTok URL" }
+  ],
   "blocks": [
     {
-      "type": "_divider"
-    },
-    {
-      "type": "@app"
-    },
-    {
-      "type": "button"
-    },
-    {
-      "type": "follow-on-shop"
-    },
-    {
-      "type": "group"
-    },
-    {
-      "type": "icon"
-    },
-    {
-      "type": "image"
-    },
-    {
-      "type": "menu"
-    },
-    {
-      "type": "payment-icons"
-    },
-    {
-      "type": "text"
-    },
-    {
-      "type": "logo"
-    },
-    {
-      "type": "jumbo-text"
-    },
-    {
-      "type": "social-links"
-    },
-    {
-      "type": "email-signup"
+      "type": "link-column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Column title" },
+        { "type": "text", "id": "link_1_label", "label": "Link 1 label" },
+        { "type": "url", "id": "link_1_url", "label": "Link 1 URL" },
+        { "type": "text", "id": "link_2_label", "label": "Link 2 label" },
+        { "type": "url", "id": "link_2_url", "label": "Link 2 URL" },
+        { "type": "text", "id": "link_3_label", "label": "Link 3 label" },
+        { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
+        { "type": "text", "id": "link_4_label", "label": "Link 4 label" },
+        { "type": "url", "id": "link_4_url", "label": "Link 4 URL" }
+      ]
     }
   ],
-  "enabled_on": {
-    "groups": ["footer"]
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "label": "t:settings.gap",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:content.padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 20
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:names.footer",
-      "category": "t:categories.footer",
-      "settings": {
-        "gap": 20,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 36,
-        "padding-block-end": 36
-      },
-      "blocks": {
-        "newsletter-group": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "gap": 6,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "newsletter-heading": {
-              "type": "text",
-              "settings": {
-                "text": "t:html_defaults.join_our_email_list",
-                "width": "100%",
-                "alignment": "left",
-                "type_preset": "h3"
-              }
-            },
-            "newsletter-text": {
-              "type": "text",
-              "settings": {
-                "text": "t:html_defaults.get_exclusive_deals_and_early_access_to_new_products",
-                "width": "100%",
-                "alignment": "left",
-                "type_preset": "rte"
-              }
-            }
-          },
-          "block_order": ["newsletter-heading", "newsletter-text"]
-        },
-        "newsletter-form": {
-          "type": "email-signup",
-          "settings": {
-            "width": "fill"
-          }
-        }
-      },
-      "block_order": ["newsletter-group", "newsletter-form"]
-    }
-  ]
+  "presets": [{
+    "name": "Footer",
+    "blocks": [
+      { "type": "link-column", "settings": { "title": "Shop", "link_1_label": "All Books", "link_1_url": "/collections/all" }},
+      { "type": "link-column", "settings": { "title": "Company", "link_1_label": "Our Story", "link_1_url": "/pages/our-story", "link_2_label": "Contact", "link_2_url": "/pages/contact" }},
+      { "type": "link-column", "settings": { "title": "Support", "link_1_label": "Shipping", "link_1_url": "/policies/shipping-policy", "link_2_label": "Returns", "link_2_url": "/policies/refund-policy" }}
+    ]
+  }]
 }
 {% endschema %}

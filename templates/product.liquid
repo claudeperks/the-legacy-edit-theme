@@ -1,0 +1,30 @@
+{% layout 'theme' %}
+
+<div class="product-page">
+  <div class="product-page__gallery">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | img_url: '1200x' }}" alt="{{ product.title }}" loading="eager">
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+
+  <div class="product-page__info">
+    {% if product.vendor %}
+      <p class="product-page__vendor">{{ product.vendor }}</p>
+    {% endif %}
+    <h1 class="product-page__title">{{ product.title }}</h1>
+    <p class="product-page__price">{{ product.price | money }}</p>
+
+    {% form 'product', product %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="btn btn--primary-dark btn--full" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+      </button>
+    {% endform %}
+
+    {% if product.description != blank %}
+      <div class="product-page__description">{{ product.description }}</div>
+    {% endif %}
+  </div>
+</div>

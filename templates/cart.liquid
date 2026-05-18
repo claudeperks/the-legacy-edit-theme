@@ -1,0 +1,35 @@
+{% layout 'theme' %}
+
+<div class="cart-page page-width">
+  <h1 class="cart-page__title">Your Cart</h1>
+
+  {% if cart.item_count == 0 %}
+    <p style="color:var(--color-text-muted);margin-bottom:2rem;">Your cart is empty.</p>
+    <a href="/collections/all" class="btn btn--primary-dark">Shop Now</a>
+  {% else %}
+    <div class="cart-items">
+      {% for item in cart.items %}
+        <div class="cart-item">
+          <img class="cart-item__image" src="{{ item.image | img_url: '200x' }}" alt="{{ item.title }}">
+          <div>
+            <p class="cart-item__title">{{ item.product.title }}</p>
+            <p class="cart-item__price">{{ item.price | money }} × {{ item.quantity }}</p>
+            <a class="cart-item__remove" href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a>
+          </div>
+          <p style="font-weight:600;">{{ item.line_price | money }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      <p class="cart-note">Shipping and taxes calculated at checkout.</p>
+      <form action="/checkout" method="post">
+        <button type="submit" class="btn btn--primary-dark btn--full">Checkout</button>
+      </form>
+    </div>
+  {% endif %}
+</div>

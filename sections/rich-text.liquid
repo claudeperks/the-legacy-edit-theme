@@ -1,0 +1,32 @@
+<section class="section" style="background: {{ section.settings.background }}">
+  <div class="page-width">
+    <div class="rich-text{% if section.settings.alignment == 'left' %} rich-text--left{% endif %}">
+      {% if section.settings.kicker != blank %}
+        <p class="rich-text__kicker">{{ section.settings.kicker }}</p>
+      {% endif %}
+      <h2 class="rich-text__heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.body != blank %}
+        <div class="rich-text__body">{{ section.settings.body }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn btn--primary-dark">{{ section.settings.button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "settings": [
+    { "type": "select", "id": "alignment", "label": "Alignment", "options": [{"value":"center","label":"Center"},{"value":"left","label":"Left"}], "default": "center" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Story" },
+    { "type": "richtext", "id": "body", "label": "Body" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Rich Text" }]
+}
+{% endschema %}

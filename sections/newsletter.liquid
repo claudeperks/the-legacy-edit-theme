@@ -1,0 +1,28 @@
+<section class="section newsletter">
+  <div class="page-width">
+    <div class="newsletter__inner">
+      <h2 class="newsletter__title">{{ section.settings.title }}</h2>
+      <p class="newsletter__subtitle">{{ section.settings.subtitle }}</p>
+      {% form 'customer', id: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="newsletter__form">
+          <input class="newsletter__input" type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required>
+          <button class="newsletter__submit" type="submit">{{ section.settings.button }}</button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Join The Legacy" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Be the first to know about new releases, limited editions, and exclusive offers." },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Your email address" },
+    { "type": "text", "id": "button", "label": "Button label", "default": "Subscribe" }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

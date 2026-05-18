@@ -1,0 +1,12 @@
+<div class="announcement-bar">
+  {{ section.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "FREE SHIPPING AVAILABLE" }
+  ]
+}
+{% endschema %}

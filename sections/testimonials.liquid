@@ -1,0 +1,43 @@
+<section class="section testimonials">
+  <div class="page-width">
+    <div class="rich-text">
+      <h2 class="rich-text__heading">{{ section.settings.title }}</h2>
+    </div>
+    <div class="testimonials__grid">
+      {% for block in section.blocks %}
+        <div class="testimonial" {{ block.shopify_attributes }}>
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__text">"{{ block.settings.text }}"</p>
+          <p class="testimonial__author">— {{ block.settings.author }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "What Our Readers Say" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Review text" },
+        { "type": "text", "id": "author", "label": "Author name" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Testimonials",
+    "blocks": [
+      { "type": "testimonial", "settings": { "text": "This is the most beautiful book I have ever owned. The quality is absolutely incredible.", "author": "Sarah M." }},
+      { "type": "testimonial", "settings": { "text": "Exceeded every expectation. A true collector's piece that I will treasure forever.", "author": "James K." }},
+      { "type": "testimonial", "settings": { "text": "The craftsmanship is unmatched. Worth every penny and then some.", "author": "Rachel T." }}
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+      {% if section.settings.collection != blank %}
+        <a href="{{ collections[section.settings.collection].url }}" class="btn btn--secondary">View All</a>
+      {% endif %}
+    </div>
+
+    <div class="product-grid">
+      {% assign col = collections[section.settings.collection] %}
+      {% assign products = col.products | default: collections.all.products %}
+      {% for product in products limit: section.settings.products_count %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Shop The Collection" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_count", "min": 2, "max": 12, "step": 1, "label": "Products to show", "default": 4 }
+  ],
+  "presets": [{ "name": "Featured Collection" }]
+}
+{% endschema %}
