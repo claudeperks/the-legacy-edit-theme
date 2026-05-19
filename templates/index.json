@@ -1,11 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": { "type": "hero", "settings": {} },
-    "marquee": { "type": "marquee", "blocks": { "b1": { "type": "item", "settings": { "text": "Handcrafted with care" }}, "b2": { "type": "item", "settings": { "text": "Free shipping available" }}, "b3": { "type": "item", "settings": { "text": "Limited editions" }}, "b4": { "type": "item", "settings": { "text": "Collector's quality" }}}, "block_order": ["b1","b2","b3","b4"] },
-    "featured": { "type": "featured-collection", "settings": { "title": "Shop The Collection", "subtitle": "Handcrafted books built to last a lifetime.", "products_count": 4 }},
-    "story": { "type": "rich-text", "settings": { "background": "#f8f7f4", "kicker": "Our Mission", "heading": "Books Made to Be Treasured Forever", "body": "<p>Every book we create is handcrafted with care, using only the finest materials. We believe a great book should be as beautiful on the outside as the words within.</p>", "button_label": "Our Story", "button_link": "/pages/our-story" }},
-    "testimonials": { "type": "testimonials", "settings": { "title": "What Our Readers Say" }, "blocks": { "t1": { "type": "testimonial", "settings": { "text": "This is the most beautiful book I have ever owned. The quality is absolutely incredible.", "author": "Sarah M." }}, "t2": { "type": "testimonial", "settings": { "text": "Exceeded every expectation. A true collector's piece that I will treasure forever.", "author": "James K." }}, "t3": { "type": "testimonial", "settings": { "text": "The craftsmanship is unmatched. Worth every penny and then some.", "author": "Rachel T." }}}, "block_order": ["t1","t2","t3"] },
-    "newsletter": { "type": "newsletter", "settings": {} }
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Handcrafted heirlooms",
+        "heading": "Your story.Your aesthetic.Beautifully kept.",
+        "subheading": "More than a photo book. A designed heirloom built around you — your photos, your Pinterest saves, your quotes, your vibe.",
+        "button_label": "start your edit",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "text": "Handcrafted with care"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "text": "Free shipping available"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "text": "Limited editions"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "text": "Collector's quality"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Shop The Collection",
+        "subtitle": "Handcrafted books built to last a lifetime.",
+        "collection": "",
+        "products_count": 4
+      }
+    },
+    "story": {
+      "type": "rich-text",
+      "settings": {
+        "alignment": "center",
+        "background": "#f8f7f4",
+        "kicker": "Our Mission",
+        "heading": "Books Made to Be Treasured Forever",
+        "body": "<p>Every book we create is handcrafted with care, using only the finest materials. We believe a great book should be as beautiful on the outside as the words within.</p>",
+        "button_label": "Our Story",
+        "button_link": "/pages/our-story"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "text": "This is the most beautiful book I have ever owned. The quality is absolutely incredible.",
+            "author": "Sarah M."
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Exceeded every expectation. A true collector's piece that I will treasure forever.",
+            "author": "James K."
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "text": "The craftsmanship is unmatched. Worth every penny and then some.",
+            "author": "Rachel T."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "title": "What Our Readers Say"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Join The Legacy",
+        "subtitle": "Be the first to know about new releases, limited editions, and exclusive offers.",
+        "placeholder": "Your email address",
+        "button": "Subscribe"
+      }
+    }
   },
-  "order": ["hero","marquee","featured","story","testimonials","newsletter"]
+  "order": [
+    "hero",
+    "marquee",
+    "featured",
+    "story",
+    "testimonials",
+    "newsletter"
+  ]
 }
