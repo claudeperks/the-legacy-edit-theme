@@ -113,15 +113,33 @@
 
 <script>
 (function() {
-  function autoFillFromMoodBoard() {
-    var savedVibe  = localStorage.getItem('legacy_vibe');
-    var savedNotes = localStorage.getItem('legacy_notes');
+  var editMap = {
+    wedding:   { title: 'The Wedding Edit',   subtitle: 'The big day, beautifully told' },
+    family:    { title: 'The Family Edit',    subtitle: 'The people who ground you' },
+    party:     { title: 'The Party Edit',     subtitle: 'Celebrations worth remembering' },
+    travel:    { title: 'The Travel Edit',    subtitle: 'Adventures that shaped you' },
+    milestone: { title: 'The Milestone Edit', subtitle: 'Achievements along the way' },
+    everyday:  { title: 'The Everyday Edit',  subtitle: 'The quiet moments that matter' }
+  };
 
+  function autoFill() {
+    // 1. Fill from URL ?edit= param
+    var editKey = new URLSearchParams(window.location.search).get('edit');
+    if (editKey && editMap[editKey]) {
+      var titleInput    = document.getElementById('custom-title');
+      var subtitleInput = document.getElementById('custom-subtitle');
+      if (titleInput    && !titleInput.value)    titleInput.value    = editMap[editKey].title;
+      if (subtitleInput && !subtitleInput.value) subtitleInput.value = editMap[editKey].subtitle;
+    }
+
+    // 2. Fill memo + vibe from mood board (localStorage)
+    var savedNotes = localStorage.getItem('legacy_notes');
     if (savedNotes) {
       var memo = document.getElementById('custom-memo');
       if (memo && !memo.value) memo.value = savedNotes;
     }
 
+    var savedVibe = localStorage.getItem('legacy_vibe');
     if (savedVibe) {
       var field   = document.getElementById('vibe-field');
       var display = document.getElementById('vibe-autofill-display');
@@ -144,9 +162,9 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', autoFillFromMoodBoard);
+    document.addEventListener('DOMContentLoaded', autoFill);
   } else {
-    autoFillFromMoodBoard();
+    autoFill();
   }
 })();
 </script>

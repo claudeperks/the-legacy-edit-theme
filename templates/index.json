@@ -27,6 +27,7 @@
           "settings": {
             "title": "The Wedding Edit",
             "subtitle": "The big day, beautifully told",
+            "edit_key": "wedding",
             "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": true
           }
@@ -36,6 +37,7 @@
           "settings": {
             "title": "The Family Edit",
             "subtitle": "The people who ground you",
+            "edit_key": "family",
             "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
@@ -45,6 +47,7 @@
           "settings": {
             "title": "The Party Edit",
             "subtitle": "Celebrations worth remembering",
+            "edit_key": "party",
             "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
@@ -54,6 +57,7 @@
           "settings": {
             "title": "The Travel Edit",
             "subtitle": "Adventures that shaped you",
+            "edit_key": "travel",
             "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
@@ -63,6 +67,7 @@
           "settings": {
             "title": "The Milestone Edit",
             "subtitle": "Achievements along the way",
+            "edit_key": "milestone",
             "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
@@ -72,6 +77,7 @@
           "settings": {
             "title": "The Everyday Edit",
             "subtitle": "The quiet moments that matter",
+            "edit_key": "everyday",
             "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
