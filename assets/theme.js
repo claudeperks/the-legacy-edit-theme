@@ -234,37 +234,30 @@ function updateCartCount() {
 }
 updateCartCount();
 
-// Edit card → product page auto-fill
+// Edit card → product page auto-fill via URL hash
 (function() {
-  // On homepage: save card title when clicked
+  // On any page with edit cards: bake the edit title into the href as a hash
   document.querySelectorAll('.edit-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      var titleEl    = card.querySelector('.edit-card__title');
-      var subtitleEl = card.querySelector('.edit-card__subtitle');
-      if (titleEl) {
-        localStorage.setItem('legacy_selected_edit_title',    titleEl.textContent.trim());
-        localStorage.setItem('legacy_selected_edit_subtitle', subtitleEl ? subtitleEl.textContent.trim() : '');
-      }
-    });
+    var titleEl = card.querySelector('.edit-card__title');
+    if (titleEl && card.href) {
+      var base = card.href.split('#')[0];
+      card.href = base + '#edit=' + encodeURIComponent(titleEl.textContent.trim());
+    }
   });
 
-  // On product page: read saved title and fill the fields
+  // On product page: read hash and fill Title field
   if (window.location.pathname.indexOf('/products/') !== -1) {
-    var savedTitle    = localStorage.getItem('legacy_selected_edit_title');
-    var savedSubtitle = localStorage.getItem('legacy_selected_edit_subtitle');
-    if (savedTitle) {
-      localStorage.removeItem('legacy_selected_edit_title');
-      localStorage.removeItem('legacy_selected_edit_subtitle');
-      function fillEditFields() {
+    var hash = window.location.hash; // e.g. #edit=The%20Wedding%20Edit
+    if (hash.indexOf('#edit=') === 0) {
+      var editTitle = decodeURIComponent(hash.slice(6));
+      var fill = function() {
         var t = document.getElementById('custom-title');
-        var s = document.getElementById('custom-subtitle');
-        if (t && !t.value) t.value = savedTitle;
-        if (s && !s.value && savedSubtitle) s.value = savedSubtitle;
-      }
+        if (t && !t.value) t.value = editTitle;
+      };
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', fillEditFields);
+        document.addEventListener('DOMContentLoaded', fill);
       } else {
-        fillEditFields();
+        fill();
       }
     }
   }
