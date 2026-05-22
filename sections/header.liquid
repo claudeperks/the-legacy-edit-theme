@@ -4,34 +4,25 @@
     <div class="site-header__logo">
       {% if section.settings.logo %}
         <a href="/">
-          <img src="{{ section.settings.logo | img_url: '300x' }}" alt="{{ shop.name }}" height="32">
+          <img src="{{ section.settings.logo | img_url: '300x' }}" alt="{{ shop.name }}" height="28">
         </a>
       {% else %}
-        <a href="/">{{ shop.name }}</a>
+        <a href="/" class="site-header__logo-text">{{ shop.name }}</a>
       {% endif %}
     </div>
 
-    <nav class="site-nav" id="site-nav">
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       {% for link in linklists[section.settings.menu].links %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}</a>
       {% endfor %}
     </nav>
 
-    <div class="site-header__icons">
-      <a href="/account" class="site-header__icon-btn" aria-label="Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </a>
-      <a href="/cart" class="site-header__icon-btn" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-count"></span>
-      </a>
+    <div class="site-header__right">
+      {% if section.settings.cta_label != blank %}
+        <a href="{{ section.settings.cta_link }}" class="btn btn--primary-dark site-header__cta">
+          {{ section.settings.cta_label }}
+        </a>
+      {% endif %}
       <button class="site-header__icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -48,8 +39,10 @@
 {
   "name": "Header",
   "settings": [
-    { "type": "image_picker", "id": "logo", "label": "Logo" },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+    { "type": "image_picker", "id": "logo",      "label": "Logo" },
+    { "type": "link_list",    "id": "menu",      "label": "Menu",          "default": "main-menu" },
+    { "type": "text",         "id": "cta_label", "label": "CTA button",    "default": "Start Your Edit" },
+    { "type": "url",          "id": "cta_link",  "label": "CTA link",      "default": "/collections/all" }
   ]
 }
 {% endschema %}
