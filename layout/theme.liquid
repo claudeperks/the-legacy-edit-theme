@@ -54,6 +54,9 @@
           function doFill() {
             var h1 = document.querySelector('.product-info__title');
             if (h1) h1.textContent = editTitle;
+            // Clear the title input — old code may have filled it
+            var inp = document.getElementById('custom-title');
+            if (inp) inp.value = '';
           }
           if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', doFill);
