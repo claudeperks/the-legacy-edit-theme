@@ -109,6 +109,22 @@
       },
       "block_order": ["f1","f2","f3","f4","f5"]
     },
+    "how-it-works": {
+      "type": "how-it-works",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Five steps to a heirloom",
+        "footnote": "Every Edit is hand-designed by our team. No templates. No shortcuts."
+      },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "label": "Choose your Edit",      "featured": false } },
+        "s2": { "type": "step", "settings": { "label": "Upload your photos",    "featured": false } },
+        "s3": { "type": "step", "settings": { "label": "Drop your mood board",  "featured": true  } },
+        "s4": { "type": "step", "settings": { "label": "Approve your proof",    "featured": false } },
+        "s5": { "type": "step", "settings": { "label": "Receive your heirloom", "featured": false } }
+      },
+      "block_order": ["s1","s2","s3","s4","s5"]
+    },
     "marquee": {
       "type": "marquee",
       "blocks": {
@@ -145,6 +161,7 @@
     "edit-picker",
     "mood-board",
     "difference",
+    "how-it-works",
     "marquee",
     "testimonials",
     "newsletter"

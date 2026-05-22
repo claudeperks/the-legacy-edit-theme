@@ -1,0 +1,58 @@
+<section class="how-it-works section--sm">
+  <div class="page-width">
+
+    <div class="how-it-works__intro">
+      {% if section.settings.eyebrow != blank %}
+        <p class="how-it-works__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="how-it-works__heading">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="how-it-works__steps">
+      {% for block in section.blocks %}
+        <div class="step-card{% if block.settings.featured %} step-card--featured{% endif %}" {{ block.shopify_attributes }}>
+          <span class="step-card__num">{{ forloop.index }}</span>
+          <span class="step-card__label">{{ block.settings.label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.footnote != blank %}
+      <p class="how-it-works__footnote">{{ section.settings.footnote }}</p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",  "label": "Eyebrow",  "default": "How it works" },
+    { "type": "text",     "id": "heading",  "label": "Heading",  "default": "Five steps to a heirloom" },
+    { "type": "text",     "id": "footnote", "label": "Footnote", "default": "Every Edit is hand-designed by our team. No templates. No shortcuts." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text",     "id": "label",    "label": "Step label", "default": "Choose your Edit" },
+        { "type": "checkbox", "id": "featured", "label": "Featured (black card)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        { "type": "step", "settings": { "label": "Choose your Edit",      "featured": false } },
+        { "type": "step", "settings": { "label": "Upload your photos",    "featured": false } },
+        { "type": "step", "settings": { "label": "Drop your mood board",  "featured": true  } },
+        { "type": "step", "settings": { "label": "Approve your proof",    "featured": false } },
+        { "type": "step", "settings": { "label": "Receive your heirloom", "featured": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}
