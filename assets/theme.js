@@ -59,6 +59,15 @@
     if (!container) return;
     container.innerHTML = '';
 
+    // Hide/show the drop zone based on whether files exist
+    if (files.length > 0) {
+      zone.classList.add('upload-zone--hidden');
+      container.classList.add('upload-zone__previews--active');
+    } else {
+      zone.classList.remove('upload-zone--hidden');
+      container.classList.remove('upload-zone__previews--active');
+    }
+
     files.forEach((file, idx) => {
       const wrap = document.createElement('div');
       wrap.className = 'upload-preview';
@@ -99,8 +108,18 @@
       container.appendChild(wrap);
     });
 
+    // "Add more" button shown when files exist
+    if (files.length > 0) {
+      const addMore = document.createElement('button');
+      addMore.type = 'button';
+      addMore.className = 'upload-zone__add-more';
+      addMore.textContent = '+ Add more';
+      addMore.addEventListener('click', () => input.click());
+      container.appendChild(addMore);
+    }
+
     const count = files.length;
-    status.textContent = count === 0 ? '' : `${count} file${count === 1 ? '' : 's'} selected`;
+    status.textContent = count === 0 ? '' : `${count} file${count === 1 ? '' : 's'} ready`;
 
     // Sync a DataTransfer back to the input so the form carries the files
     try {

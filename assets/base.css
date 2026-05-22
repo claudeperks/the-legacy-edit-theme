@@ -2308,6 +2308,11 @@ details[open] .product-accordion__summary::after { content: '−'; }
   display: flex;
 }
 
+/* Hide drop zone when files are selected */
+.upload-zone--hidden {
+  display: none;
+}
+
 /* File previews */
 .upload-zone__previews {
   display: grid;
@@ -2317,6 +2322,37 @@ details[open] .product-accordion__summary::after { content: '−'; }
 }
 
 .upload-zone__previews:empty { display: none; }
+
+/* Preview area when active (files uploaded, zone hidden) */
+.upload-zone__previews--active {
+  margin-top: 0;
+  padding: var(--spacing-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-cream);
+}
+
+/* "Add more files" button inside preview area */
+.upload-zone__add-more {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1.5px dashed var(--color-gray-mid);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.upload-zone__add-more:hover {
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
 
 .upload-preview {
   position: relative;
