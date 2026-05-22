@@ -234,8 +234,9 @@ function updateCartCount() {
 }
 updateCartCount();
 
-// Save selected edit type to localStorage when an edit card is clicked
+// Edit card → product page auto-fill
 (function() {
+  // On homepage: save card title when clicked
   document.querySelectorAll('.edit-card').forEach(function(card) {
     card.addEventListener('click', function() {
       var titleEl    = card.querySelector('.edit-card__title');
@@ -246,6 +247,27 @@ updateCartCount();
       }
     });
   });
+
+  // On product page: read saved title and fill the fields
+  if (window.location.pathname.indexOf('/products/') !== -1) {
+    var savedTitle    = localStorage.getItem('legacy_selected_edit_title');
+    var savedSubtitle = localStorage.getItem('legacy_selected_edit_subtitle');
+    if (savedTitle) {
+      localStorage.removeItem('legacy_selected_edit_title');
+      localStorage.removeItem('legacy_selected_edit_subtitle');
+      function fillEditFields() {
+        var t = document.getElementById('custom-title');
+        var s = document.getElementById('custom-subtitle');
+        if (t && !t.value) t.value = savedTitle;
+        if (s && !s.value && savedSubtitle) s.value = savedSubtitle;
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fillEditFields);
+      } else {
+        fillEditFields();
+      }
+    }
+  }
 })();
 
 // Add to cart
