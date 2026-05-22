@@ -848,9 +848,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: var(--spacing-xl) 0 var(--spacing-2xl);
 }
 
-.edit-picker .page-width {
-  padding-left: var(--spacing-lg);
-  padding-right: var(--spacing-lg);
+.edit-picker__inner {
+  padding: 0 var(--spacing-xl);
 }
 
 .edit-picker__intro {
