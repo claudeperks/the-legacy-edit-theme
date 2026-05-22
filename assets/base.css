@@ -47,8 +47,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .page-width {
   max-width: var(--page-width);
-  margin: 0 20px;
-  padding: 0 5px;
+  margin: 0 auto;
+  padding: 0 80px;
 }
 
 /* ── ANNOUNCEMENT BAR ── */
