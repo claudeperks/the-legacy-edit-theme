@@ -88,6 +88,27 @@
         "body": "Screenshot your favourite Pinterest quotes. Save the memes that made you cry-laugh. Grab the words that just get you. Upload them — and we'll weave them into your Edit. Beautifully designed, perfectly placed."
       }
     },
+    "difference": {
+      "type": "difference",
+      "settings": {
+        "eyebrow": "The difference",
+        "heading": "What makes ours different?",
+        "subheading": "We made one deliberate decision at every turn. Here's what that looks like.",
+        "close_line1": "One book.",
+        "close_line2": "Done properly.",
+        "close_line3": "That's the whole idea.",
+        "close_cta": "Start your Edit",
+        "close_link": "shopify://collections/all"
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "title": "One size. Perfectly considered.",  "body": "Every Legacy Edit is 13 × 9 inches — designed to sit open on a coffee table and command a room.",                                            "tag": "13 × 9 inches" } },
+        "f2": { "type": "feature", "settings": { "title": "Coffee table ready.",              "body": "This isn't a book you hide on a shelf. It's a conversation piece — designed to be left out, picked up, and passed around.",                    "tag": "Coffee table format" } },
+        "f3": { "type": "feature", "settings": { "title": "Linen hardcover. Nothing less.",   "body": "Premium linen hardcover binding only — tactile, elegant, and built to last generations. No glossy covers.",                                    "tag": "Linen hard cover only" } },
+        "f4": { "type": "feature", "settings": { "title": "Every page, custom.",              "body": "No templates. Our designers build every layout from scratch around your photos, mood board, and story.",                                        "tag": "100% custom pages" } },
+        "f5": { "type": "feature", "settings": { "title": "More pages. Same price.",          "body": "Every Edit comes with more pages than you'd expect — because your story deserves room to breathe.",                                            "tag": "More pages included" } }
+      },
+      "block_order": ["f1","f2","f3","f4","f5"]
+    },
     "marquee": {
       "type": "marquee",
       "blocks": {
@@ -123,6 +144,7 @@
     "hero",
     "edit-picker",
     "mood-board",
+    "difference",
     "marquee",
     "testimonials",
     "newsletter"

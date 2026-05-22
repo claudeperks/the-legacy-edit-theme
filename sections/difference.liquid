@@ -1,0 +1,83 @@
+<section class="difference section">
+  <div class="page-width">
+
+    <div class="difference__intro">
+      {% if section.settings.eyebrow != blank %}
+        <p class="difference__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="difference__heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="difference__sub">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="difference__card">
+      <div class="difference__grid">
+
+        {% for block in section.blocks %}
+          <div class="diff-item" {{ block.shopify_attributes }}>
+            <span class="diff-item__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <h3 class="diff-item__title">{{ block.settings.title }}</h3>
+            <p class="diff-item__body">{{ block.settings.body }}</p>
+            {% if block.settings.tag != blank %}
+              <span class="diff-item__tag">{{ block.settings.tag }}</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <!-- Closing black card — last cell -->
+        <div class="diff-close">
+          <p class="diff-close__line1">{{ section.settings.close_line1 }}</p>
+          <p class="diff-close__line2"><em>{{ section.settings.close_line2 }}</em></p>
+          <p class="diff-close__line3">{{ section.settings.close_line3 }}</p>
+          {% if section.settings.close_cta != blank %}
+            <a href="{{ section.settings.close_link | default: '/collections/all' }}" class="diff-close__cta">
+              {{ section.settings.close_cta }} ↗
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "What Makes Us Different",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",     "label": "Eyebrow",     "default": "The difference" },
+    { "type": "text",     "id": "heading",     "label": "Heading",     "default": "What makes ours different?" },
+    { "type": "textarea","id": "subheading",   "label": "Subheading",  "default": "We made one deliberate decision at every turn. Here's what that looks like." },
+    { "type": "text",    "id": "close_line1",  "label": "Closing — line 1", "default": "One book." },
+    { "type": "text",    "id": "close_line2",  "label": "Closing — line 2 (italic)", "default": "Done properly." },
+    { "type": "text",    "id": "close_line3",  "label": "Closing — line 3", "default": "That's the whole idea." },
+    { "type": "text",    "id": "close_cta",    "label": "Closing CTA label", "default": "Start your Edit" },
+    { "type": "url",     "id": "close_link",   "label": "Closing CTA link",  "default": "/collections/all" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text",     "id": "title", "label": "Title",       "default": "One size. Perfectly considered." },
+        { "type": "textarea", "id": "body",  "label": "Description", "default": "Every Legacy Edit is 13 × 9 inches — designed to sit open on a coffee table and command a room." },
+        { "type": "text",     "id": "tag",   "label": "Tag label",   "default": "13 × 9 inches" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What Makes Us Different",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "One size. Perfectly considered.",  "body": "Every Legacy Edit is 13 × 9 inches — designed to sit open on a coffee table and command a room.",                                               "tag": "13 × 9 inches" } },
+        { "type": "feature", "settings": { "title": "Coffee table ready.",              "body": "This isn't a book you hide on a shelf. It's a conversation piece — designed to be left out, picked up, and passed around.",                       "tag": "Coffee table format" } },
+        { "type": "feature", "settings": { "title": "Linen hardcover. Nothing less.",   "body": "Premium linen hardcover binding only — tactile, elegant, and built to last generations. No glossy covers.",                                       "tag": "Linen hard cover only" } },
+        { "type": "feature", "settings": { "title": "Every page, custom.",              "body": "No templates. Our designers build every layout from scratch around your photos, mood board, and story.",                                           "tag": "100% custom pages" } },
+        { "type": "feature", "settings": { "title": "More pages. Same price.",          "body": "Every Edit comes with more pages than you'd expect — because your story deserves room to breathe.",                                               "tag": "More pages included" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
