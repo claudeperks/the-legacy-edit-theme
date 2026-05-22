@@ -843,7 +843,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ── EDIT PICKER ── */
-.edit-picker { background: var(--color-white); }
+.edit-picker {
+  background: var(--color-white);
+  padding: var(--spacing-xl) 0 var(--spacing-2xl);
+}
+
+.edit-picker .page-width {
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+}
 
 .edit-picker__intro {
   margin-bottom: var(--spacing-lg);
@@ -876,13 +884,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .edit-picker__grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1.25fr 1fr 1fr;
   gap: 12px;
 }
 
-/* Wide featured card takes 2 of 6 cols; normal cards take 1.333 of 6 = use span */
 .edit-card {
-  grid-column: span 2;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -894,10 +900,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: border-color 0.2s, background 0.2s, color 0.2s;
   min-height: 90px;
   justify-content: center;
-}
-
-.edit-card--featured {
-  grid-column: span 3;
 }
 
 .edit-card:hover {
@@ -935,7 +937,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 @media (max-width: 768px) {
   .edit-picker__grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .edit-card, .edit-card--featured { grid-column: span 1; }
 }
 @media (max-width: 480px) {
   .edit-picker__grid { grid-template-columns: 1fr; }
