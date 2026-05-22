@@ -1,0 +1,48 @@
+{% comment %}
+  Upload Sections — Photos + Pinterest & Notes
+  Works standalone on any page (e.g. a custom "Upload Your Files" page).
+  On product pages use the snippet instead: {% render 'upload-zones' %}
+{% endcomment %}
+
+<div class="upload-sections section page-width">
+
+  <div class="upload-sections__intro">
+    <p class="upload-sections__eyebrow">{{ section.settings.eyebrow | default: 'Your Files' }}</p>
+    <h2 class="upload-sections__heading">{{ section.settings.heading | default: 'Share Your Vision' }}</h2>
+    <p class="upload-sections__subheading">{{ section.settings.subheading | default: 'Upload your photos and inspiration below so we can bring your project to life.' }}</p>
+  </div>
+
+  {% render 'upload-zones' %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Upload Sections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Your Files"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Share Your Vision"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Upload your photos and inspiration below so we can bring your project to life."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upload Sections"
+    }
+  ]
+}
+{% endschema %}
