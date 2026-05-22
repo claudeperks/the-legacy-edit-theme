@@ -234,6 +234,27 @@ function updateCartCount() {
 }
 updateCartCount();
 
+// Save selected edit type to localStorage when an edit card is clicked
+(function() {
+  var editTitles = {
+    wedding:   'The Wedding Edit',
+    family:    'The Family Edit',
+    party:     'The Party Edit',
+    travel:    'The Travel Edit',
+    milestone: 'The Milestone Edit',
+    everyday:  'The Everyday Edit'
+  };
+  document.querySelectorAll('[data-edit-key]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var key = card.dataset.editKey;
+      if (key && editTitles[key]) {
+        localStorage.setItem('legacy_selected_edit_title',    editTitles[key]);
+        localStorage.setItem('legacy_selected_edit_subtitle', card.querySelector('.edit-card__subtitle') ? card.querySelector('.edit-card__subtitle').textContent.trim() : '');
+      }
+    });
+  });
+})();
+
 // Add to cart
 document.querySelectorAll('.product-card__add').forEach(btn => {
   btn.addEventListener('click', async (e) => {

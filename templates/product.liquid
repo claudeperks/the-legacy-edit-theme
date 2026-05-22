@@ -283,24 +283,17 @@
     }
   })();
 
-  // Auto-fill personalisation fields from edit card click
+  // Auto-fill Title + Subtitle from edit card selection (saved in localStorage by theme.js)
   (function() {
-    var editMap = {
-      wedding:   { title: 'The Wedding Edit',   subtitle: 'The big day, beautifully told' },
-      family:    { title: 'The Family Edit',    subtitle: 'The people who ground you' },
-      party:     { title: 'The Party Edit',     subtitle: 'Celebrations worth remembering' },
-      travel:    { title: 'The Travel Edit',    subtitle: 'Adventures that shaped you' },
-      milestone: { title: 'The Milestone Edit', subtitle: 'Achievements along the way' },
-      everyday:  { title: 'The Everyday Edit',  subtitle: 'The quiet moments that matter' }
-    };
-    var editKey = new URLSearchParams(window.location.search).get('edit')
-                  || sessionStorage.getItem('legacy_edit_key');
-    sessionStorage.removeItem('legacy_edit_key');
-    if (editKey && editMap[editKey]) {
+    var editTitle    = localStorage.getItem('legacy_selected_edit_title');
+    var editSubtitle = localStorage.getItem('legacy_selected_edit_subtitle');
+    if (editTitle) {
+      localStorage.removeItem('legacy_selected_edit_title');
+      localStorage.removeItem('legacy_selected_edit_subtitle');
       var t = document.getElementById('custom-title');
       var s = document.getElementById('custom-subtitle');
-      if (t && !t.value) t.value = editMap[editKey].title;
-      if (s && !s.value) s.value = editMap[editKey].subtitle;
+      if (t && !t.value) t.value = editTitle;
+      if (s && !s.value && editSubtitle) s.value = editSubtitle;
     }
   })();
 
