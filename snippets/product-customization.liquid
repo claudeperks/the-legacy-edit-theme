@@ -113,28 +113,8 @@
 
 <script>
 (function() {
-  var editMap = {
-    wedding:   { title: 'The Wedding Edit',   subtitle: 'The big day, beautifully told' },
-    family:    { title: 'The Family Edit',    subtitle: 'The people who ground you' },
-    party:     { title: 'The Party Edit',     subtitle: 'Celebrations worth remembering' },
-    travel:    { title: 'The Travel Edit',    subtitle: 'Adventures that shaped you' },
-    milestone: { title: 'The Milestone Edit', subtitle: 'Achievements along the way' },
-    everyday:  { title: 'The Everyday Edit',  subtitle: 'The quiet moments that matter' }
-  };
-
-  function autoFill() {
-    // 1. Fill from URL ?edit= param OR sessionStorage (whichever has a value)
-    var editKey = new URLSearchParams(window.location.search).get('edit')
-                  || sessionStorage.getItem('legacy_edit_key');
-    sessionStorage.removeItem('legacy_edit_key'); // clear after reading
-    if (editKey && editMap[editKey]) {
-      var titleInput    = document.getElementById('custom-title');
-      var subtitleInput = document.getElementById('custom-subtitle');
-      if (titleInput    && !titleInput.value)    titleInput.value    = editMap[editKey].title;
-      if (subtitleInput && !subtitleInput.value) subtitleInput.value = editMap[editKey].subtitle;
-    }
-
-    // 2. Fill memo + vibe from mood board (localStorage)
+  function initCustomFields() {
+    // Fill memo + vibe from mood board (localStorage)
     var savedNotes = localStorage.getItem('legacy_notes');
     if (savedNotes) {
       var memo = document.getElementById('custom-memo');
@@ -164,9 +144,9 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', autoFill);
+    document.addEventListener('DOMContentLoaded', initCustomFields);
   } else {
-    autoFill();
+    initCustomFields();
   }
 })();
 </script>

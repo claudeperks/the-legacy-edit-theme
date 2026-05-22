@@ -283,6 +283,27 @@
     }
   })();
 
+  // Auto-fill personalisation fields from edit card click
+  (function() {
+    var editMap = {
+      wedding:   { title: 'The Wedding Edit',   subtitle: 'The big day, beautifully told' },
+      family:    { title: 'The Family Edit',    subtitle: 'The people who ground you' },
+      party:     { title: 'The Party Edit',     subtitle: 'Celebrations worth remembering' },
+      travel:    { title: 'The Travel Edit',    subtitle: 'Adventures that shaped you' },
+      milestone: { title: 'The Milestone Edit', subtitle: 'Achievements along the way' },
+      everyday:  { title: 'The Everyday Edit',  subtitle: 'The quiet moments that matter' }
+    };
+    var editKey = new URLSearchParams(window.location.search).get('edit')
+                  || sessionStorage.getItem('legacy_edit_key');
+    sessionStorage.removeItem('legacy_edit_key');
+    if (editKey && editMap[editKey]) {
+      var t = document.getElementById('custom-title');
+      var s = document.getElementById('custom-subtitle');
+      if (t && !t.value) t.value = editMap[editKey].title;
+      if (s && !s.value) s.value = editMap[editKey].subtitle;
+    }
+  })();
+
   // Gallery thumbnails
   document.querySelectorAll('.gallery-thumb').forEach(function(thumb) {
     thumb.addEventListener('click', function() {
