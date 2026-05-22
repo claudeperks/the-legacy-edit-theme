@@ -244,6 +244,44 @@
 </div>
 
 <script>
+  // Show mood board uploaded image in gallery if available
+  (function() {
+    var preview = sessionStorage.getItem('legacy_upload_preview');
+    if (!preview) return;
+    var mainImg = document.getElementById('gallery-main-img');
+    if (!mainImg) return;
+
+    // Add uploaded image as first thumbnail and set as main
+    var thumbsWrap = document.querySelector('.product-gallery__thumbs');
+
+    // Create thumbnail for the uploaded image
+    var uploadThumb = document.createElement('button');
+    uploadThumb.type = 'button';
+    uploadThumb.className = 'gallery-thumb is-active';
+    uploadThumb.dataset.src = preview;
+    uploadThumb.innerHTML = '<img src="' + preview + '" alt="Your uploaded photo">';
+    uploadThumb.setAttribute('aria-label', 'Your uploaded photo');
+
+    // Deactivate existing first thumb
+    if (thumbsWrap) {
+      var existing = thumbsWrap.querySelector('.gallery-thumb.is-active');
+      if (existing) existing.classList.remove('is-active');
+      thumbsWrap.insertBefore(uploadThumb, thumbsWrap.firstChild);
+    }
+
+    // Set as main image
+    mainImg.src = preview;
+
+    // Add label above gallery
+    var gallery = document.querySelector('.product-gallery');
+    if (gallery) {
+      var badge = document.createElement('p');
+      badge.className = 'gallery-upload-badge';
+      badge.textContent = 'Your uploaded photo';
+      gallery.insertBefore(badge, gallery.firstChild);
+    }
+  })();
+
   // Gallery thumbnails
   document.querySelectorAll('.gallery-thumb').forEach(function(thumb) {
     thumb.addEventListener('click', function() {
