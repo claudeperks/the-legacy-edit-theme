@@ -1,4 +1,4 @@
-{% assign fallback_imgs = 'photo-1519741497674-611481863552,photo-1511895426328-dc8714191011,photo-1492684223066-81342ee5ff30,photo-1476514525535-07fb3b4ae5f1,photo-1523050854058-8df90110c9f1,photo-1513694203232-719a280e022f' | split: ',' %}
+{% assign fallback_imgs = 'wedding/800/1066,family/800/1066,party/800/1066,travel/800/1066,milestone/800/1066,everyday/800/1066' | split: ',' %}
 
 <section class="edit-picker">
   <div class="page-width">
@@ -25,7 +25,7 @@
             {% if block.settings.image %}
               <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}" loading="lazy" class="edit-card__img">
             {% else %}
-              <img src="https://images.unsplash.com/{{ fb }}?auto=format&fit=crop&w=800&q=80" alt="{{ block.settings.title }}" loading="lazy" class="edit-card__img">
+              <img src="https://picsum.photos/seed/{{ fb }}" alt="{{ block.settings.title }}" loading="lazy" class="edit-card__img">
             {% endif %}
           </div>
           <div class="edit-card__overlay"></div>
