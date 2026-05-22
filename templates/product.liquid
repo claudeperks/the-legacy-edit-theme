@@ -24,9 +24,12 @@
           class="product-gallery__main-img"
         >
       {% else %}
-        <div class="product-gallery__placeholder">
-          {{ 'product-1' | placeholder_svg_tag }}
-        </div>
+        <img
+          src="https://picsum.photos/seed/legacybook/1200/900"
+          alt="{{ product.title }}"
+          loading="eager"
+          class="product-gallery__main-img"
+        >
       {% endif %}
     </div>
 
