@@ -33,5 +33,36 @@
   {% section 'footer' %}
 
   {{ 'theme.js' | asset_url | script_tag }}
+
+  <script>
+    // Edit card → product page title auto-fill
+    (function() {
+      // On homepage: add hash to each edit card href before user clicks
+      document.querySelectorAll('.edit-card').forEach(function(card) {
+        var titleEl = card.querySelector('.edit-card__title');
+        if (titleEl && card.tagName === 'A') {
+          var base = card.href.split('#')[0];
+          card.href = base + '#edit=' + encodeURIComponent(titleEl.textContent.trim());
+        }
+      });
+
+      // On product page: read hash and fill Title field
+      if (window.location.pathname.indexOf('/products/') !== -1) {
+        var hash = window.location.hash;
+        if (hash.indexOf('#edit=') === 0) {
+          var editTitle = decodeURIComponent(hash.slice(6));
+          function doFill() {
+            var t = document.getElementById('custom-title');
+            if (t && !t.value) t.value = editTitle;
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', doFill);
+          } else {
+            doFill();
+          }
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
