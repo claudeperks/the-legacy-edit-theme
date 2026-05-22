@@ -160,14 +160,28 @@
     const container = document.getElementById('mood-previews');
     if (!container) return;
     container.innerHTML = '';
-    Array.from(files).forEach(file => {
+    Array.from(files).forEach((file, index) => {
       const wrap = document.createElement('div');
       wrap.style.cssText = 'aspect-ratio:1;overflow:hidden;background:#1a1a1a;';
       if (file.type.startsWith('image/')) {
         const img = document.createElement('img');
         img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
         const reader = new FileReader();
-        reader.onload = e => { img.src = e.target.result; };
+        reader.onload = e => {
+          img.src = e.target.result;
+          if (index === 0) {
+            const canvas = document.createElement('canvas');
+            const tmp = new Image();
+            tmp.onload = () => {
+              const r = Math.min(900 / tmp.width, 700 / tmp.height, 1);
+              canvas.width = Math.round(tmp.width * r);
+              canvas.height = Math.round(tmp.height * r);
+              canvas.getContext('2d').drawImage(tmp, 0, 0, canvas.width, canvas.height);
+              try { sessionStorage.setItem('legacy_upload_preview', canvas.toDataURL('image/jpeg', 0.8)); } catch(_) {}
+            };
+            tmp.src = e.target.result;
+          }
+        };
         reader.readAsDataURL(file);
         wrap.appendChild(img);
       } else {
