@@ -8,9 +8,9 @@
         "heading": "Your story.\nYour aesthetic.\nBeautifully kept.",
         "subheading": "More than a photo book. A designed heirloom built around you — your photos, your Pinterest saves, your quotes, your vibe.",
         "btn1_label": "Start your Edit",
-        "btn1_link": "shopify://collections/all",
+        "btn1_link": "shopify://products/the-legacy-edit-custom-photo-book",
         "btn2_label": "See the collection",
-        "btn2_link": "shopify://collections/all",
+        "btn2_link": "shopify://products/the-legacy-edit-custom-photo-book",
         "image": null
       }
     },
@@ -27,7 +27,7 @@
           "settings": {
             "title": "The Wedding Edit",
             "subtitle": "The big day, beautifully told",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": true
           }
         },
@@ -36,7 +36,7 @@
           "settings": {
             "title": "The Family Edit",
             "subtitle": "The people who ground you",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
         },
@@ -45,7 +45,7 @@
           "settings": {
             "title": "The Party Edit",
             "subtitle": "Celebrations worth remembering",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
         },
@@ -54,7 +54,7 @@
           "settings": {
             "title": "The Travel Edit",
             "subtitle": "Adventures that shaped you",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
         },
@@ -63,7 +63,7 @@
           "settings": {
             "title": "The Milestone Edit",
             "subtitle": "Achievements along the way",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
         },
@@ -72,7 +72,7 @@
           "settings": {
             "title": "The Everyday Edit",
             "subtitle": "The quiet moments that matter",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/the-legacy-edit-custom-photo-book",
             "featured": false
           }
         }
@@ -102,7 +102,7 @@
         "close_line2": "Done properly.",
         "close_line3": "That's the whole idea.",
         "close_cta": "Start your Edit",
-        "close_link": "shopify://collections/all"
+        "close_link": "shopify://products/the-legacy-edit-custom-photo-book"
       },
       "blocks": {
         "f1": { "type": "feature", "settings": { "title": "One size. Perfectly considered.",  "body": "Every Legacy Edit is 13 × 9 inches — designed to sit open on a coffee table and command a room.",                                            "tag": "13 × 9 inches" } },
@@ -156,7 +156,7 @@
         "heading": "Ready to start your story?",
         "subheading": "Join hundreds of families who've made their memories last.",
         "btn_label": "Start your Edit",
-        "btn_link": "shopify://collections/all"
+        "btn_link": "shopify://products/the-legacy-edit-custom-photo-book"
       }
     },
     "pricing": {
@@ -167,9 +167,9 @@
         "subheading": "Every Edit includes mood board design. No hidden extras."
       },
       "blocks": {
-        "p1": { "type": "plan", "settings": { "label": "The Single Edit",  "price": "£149", "description": "One beautifully designed volume",              "features": "Up to 80 pages,Mood board included,Digital proof",             "btn_label": "Select", "featured": false } },
-        "p2": { "type": "plan", "settings": { "badge": "Most Popular", "label": "The Collection",  "price": "£399", "description": "Three Edits, beautifully boxed together",        "features": "Up to 240 pages total,Mood board on every Edit,Luxury gift box","btn_label": "Select", "featured": true  } },
-        "p3": { "type": "plan", "settings": { "label": "The Full Library", "price": "£899", "description": "The complete Legacy Edit — all volumes",        "features": "All 12 Edits,Dedicated designer,Concierge delivery",            "btn_label": "Select", "featured": false } }
+        "p1": { "type": "plan", "settings": { "label": "The Single Edit",  "price": "£149", "description": "One beautifully designed volume",              "features": "Up to 80 pages,Mood board included,Digital proof",             "btn_label": "Select", "link": "shopify://products/the-legacy-edit-custom-photo-book", "featured": false } },
+        "p2": { "type": "plan", "settings": { "badge": "Most Popular", "label": "The Collection",  "price": "£399", "description": "Three Edits, beautifully boxed together",        "features": "Up to 240 pages total,Mood board on every Edit,Luxury gift box","btn_label": "Select", "link": "shopify://products/the-legacy-edit-custom-photo-book", "featured": true  } },
+        "p3": { "type": "plan", "settings": { "label": "The Full Library", "price": "£899", "description": "The complete Legacy Edit — all volumes",        "features": "All 12 Edits,Dedicated designer,Concierge delivery",            "btn_label": "Select", "link": "shopify://products/the-legacy-edit-custom-photo-book", "featured": false } }
       },
       "block_order": ["p1","p2","p3"]
     },
