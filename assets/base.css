@@ -1588,6 +1588,42 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .price-card { margin-left: 0; margin-top: -1px; }
 }
 
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: var(--color-gray-light);
+  padding: var(--spacing-2xl) 0;
+}
+
+.cta-banner__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.cta-banner__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-black);
+}
+
+.cta-banner__sub {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.cta-banner__btn {
+  margin-top: var(--spacing-xs);
+  padding: 14px 36px;
+  letter-spacing: 0.1em;
+}
+
 /* ── UPLOAD SECTIONS (standalone page section) ── */
 .upload-sections__intro {
   text-align: center;

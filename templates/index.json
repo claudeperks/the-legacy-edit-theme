@@ -146,6 +146,15 @@
       "block_order": ["t1", "t2", "t3"],
       "settings": { "title": "What Our Readers Say" }
     },
+    "cta-banner": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Ready to start your story?",
+        "subheading": "Join hundreds of families who've made their memories last.",
+        "btn_label": "Start your Edit",
+        "btn_link": "shopify://collections/all"
+      }
+    },
     "pricing": {
       "type": "pricing",
       "settings": {
@@ -187,6 +196,7 @@
     "how-it-works",
     "quote-banner",
     "pricing",
+    "cta-banner",
     "marquee",
     "testimonials",
     "newsletter"

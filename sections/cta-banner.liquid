@@ -1,0 +1,26 @@
+<section class="cta-banner">
+  <div class="page-width cta-banner__inner">
+    <h2 class="cta-banner__heading">{{ section.settings.heading }}</h2>
+    {% if section.settings.subheading != blank %}
+      <p class="cta-banner__sub">{{ section.settings.subheading }}</p>
+    {% endif %}
+    {% if section.settings.btn_label != blank %}
+      <a href="{{ section.settings.btn_link | default: '/collections/all' }}" class="btn btn--primary-dark cta-banner__btn">
+        {{ section.settings.btn_label }} ↗
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "settings": [
+    { "type": "text",     "id": "heading",    "label": "Heading",       "default": "Ready to start your story?" },
+    { "type": "text",     "id": "subheading", "label": "Subheading",    "default": "Join hundreds of families who've made their memories last." },
+    { "type": "text",     "id": "btn_label",  "label": "Button label",  "default": "Start your Edit" },
+    { "type": "url",      "id": "btn_link",   "label": "Button link",   "default": "/collections/all" }
+  ],
+  "presets": [{ "name": "CTA Banner" }]
+}
+{% endschema %}
