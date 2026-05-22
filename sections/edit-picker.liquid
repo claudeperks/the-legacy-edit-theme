@@ -1,30 +1,32 @@
 <section class="edit-picker">
+  <div class="page-width">
 
-  <div class="edit-picker__intro">
-    {% if section.settings.eyebrow != blank %}
-      <p class="edit-picker__eyebrow">{{ section.settings.eyebrow }}</p>
-    {% endif %}
-    <h2 class="edit-picker__heading">{{ section.settings.heading }}</h2>
-    {% if section.settings.subheading != blank %}
-      <p class="edit-picker__sub">{{ section.settings.subheading }}</p>
-    {% endif %}
+    <div class="edit-picker__intro">
+      {% if section.settings.eyebrow != blank %}
+        <p class="edit-picker__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="edit-picker__heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="edit-picker__sub">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="edit-picker__grid">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.link | default: '/collections/all' }}"
+          class="edit-card{% if block.settings.featured %} edit-card--featured{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="edit-card__title">{{ block.settings.title }}</span>
+          {% if block.settings.subtitle != blank %}
+            <span class="edit-card__subtitle">{{ block.settings.subtitle }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+
   </div>
-
-  <div class="edit-picker__grid">
-    {% for block in section.blocks %}
-      <a
-        href="{{ block.settings.link | default: '/collections/all' }}"
-        class="edit-card{% if block.settings.featured %} edit-card--featured{% endif %}"
-        {{ block.shopify_attributes }}
-      >
-        <span class="edit-card__title">{{ block.settings.title }}</span>
-        {% if block.settings.subtitle != blank %}
-          <span class="edit-card__subtitle">{{ block.settings.subtitle }}</span>
-        {% endif %}
-      </a>
-    {% endfor %}
-  </div>
-
 </section>
 
 {% schema %}
