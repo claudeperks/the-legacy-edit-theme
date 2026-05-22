@@ -845,9 +845,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── EDIT PICKER ── */
 .edit-picker {
   background: var(--color-white);
-  padding: var(--spacing-xl) 0 var(--spacing-2xl) var(--spacing-xl);
-  width: 100%;
-  box-sizing: border-box;
+  padding: var(--spacing-xl) var(--spacing-2xl) var(--spacing-2xl) var(--spacing-xl);
 }
 
 .edit-picker__intro {
@@ -883,7 +881,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: grid;
   grid-template-columns: 1.25fr 1fr 1fr;
   gap: 10px;
-  padding-right: var(--spacing-xl);
 }
 
 .edit-card {
