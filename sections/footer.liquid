@@ -13,25 +13,46 @@
           {% endif %}
         </div>
       </div>
-      {% for block in section.blocks %}
-        <div {{ block.shopify_attributes }}>
-          <p class="site-footer__col-title">{{ block.settings.title }}</p>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div {{ block.shopify_attributes }}>
+            <p class="site-footer__col-title">{{ block.settings.title }}</p>
+            <ul class="site-footer__links">
+              {% if block.settings.link_1_label != blank %}<li><a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_label }}</a></li>{% endif %}
+              {% if block.settings.link_2_label != blank %}<li><a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_label }}</a></li>{% endif %}
+              {% if block.settings.link_3_label != blank %}<li><a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_label }}</a></li>{% endif %}
+              {% if block.settings.link_4_label != blank %}<li><a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_label }}</a></li>{% endif %}
+            </ul>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div>
+          <p class="site-footer__col-title">Shop</p>
           <ul class="site-footer__links">
-            {% if block.settings.link_1_label != blank %}
-              <li><a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_label }}</a></li>
-            {% endif %}
-            {% if block.settings.link_2_label != blank %}
-              <li><a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_label }}</a></li>
-            {% endif %}
-            {% if block.settings.link_3_label != blank %}
-              <li><a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_label }}</a></li>
-            {% endif %}
-            {% if block.settings.link_4_label != blank %}
-              <li><a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_label }}</a></li>
-            {% endif %}
+            <li><a href="/products/the-legacy-edit-custom-photo-book">The Collection</a></li>
+            <li><a href="/products/the-legacy-edit-custom-photo-book">Start your Edit</a></li>
+            <li><a href="/products/the-legacy-edit-custom-photo-book">Pricing</a></li>
           </ul>
         </div>
-      {% endfor %}
+        <div>
+          <p class="site-footer__col-title">The Edits</p>
+          <ul class="site-footer__links">
+            <li><a href="/products/the-legacy-edit-custom-photo-book#edit=The%20Wedding%20Edit">The Wedding Edit</a></li>
+            <li><a href="/products/the-legacy-edit-custom-photo-book#edit=The%20Family%20Edit">The Family Edit</a></li>
+            <li><a href="/products/the-legacy-edit-custom-photo-book#edit=The%20Travel%20Edit">The Travel Edit</a></li>
+            <li><a href="/products/the-legacy-edit-custom-photo-book#edit=The%20Everyday%20Edit">The Everyday Edit</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__col-title">Help</p>
+          <ul class="site-footer__links">
+            <li><a href="/policies/shipping-policy">Shipping</a></li>
+            <li><a href="/policies/refund-policy">Returns</a></li>
+            <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/pages/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      {% endif %}
     </div>
     <div class="site-footer__bottom">
       <p class="site-footer__copyright">© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
