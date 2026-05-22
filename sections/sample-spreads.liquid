@@ -1,4 +1,4 @@
-{% assign spread_imgs = '100/1200/900,200/800/600,300/800/600,400/800/600' | split: ',' %}
+{% assign spread_seeds = '200,201,202,203' | split: ',' %}
 
 <section class="sample-spreads section">
   <div class="page-width">
@@ -15,14 +15,14 @@
 
     <div class="sample-spreads__grid">
       {% for block in section.blocks %}
-        {% assign fb_spread = spread_imgs[forloop.index0] %}
+        {% assign fb_spread = spread_seeds[forloop.index0] %}
         <div class="spread-card{% if block.settings.featured %} spread-card--featured{% endif %}" {{ block.shopify_attributes }}>
           <div class="spread-card__img-wrap">
             {% if block.settings.image != blank %}
               {{ block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'spread-card__img', alt: block.settings.caption }}
             {% else %}
               <img
-                src="https://picsum.photos/{{ fb_spread }}"
+                src="https://picsum.photos/seed/{{ fb_spread }}/1200/900"
                 alt="{{ block.settings.caption | default: block.settings.tag }}"
                 loading="lazy"
                 class="spread-card__img"

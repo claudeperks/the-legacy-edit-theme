@@ -1,4 +1,4 @@
-{% assign fallback_imgs = '10/800/1066,20/800/1066,30/800/1066,40/800/1066,50/800/1066,60/800/1066' | split: ',' %}
+{% assign fallback_seeds = '101,102,103,104,105,106' | split: ',' %}
 
 <section class="edit-picker">
   <div class="page-width">
@@ -15,7 +15,7 @@
 
     <div class="edit-picker__grid">
       {% for block in section.blocks %}
-        {% assign fb = fallback_imgs[forloop.index0] %}
+        {% assign fb = fallback_seeds[forloop.index0] %}
         <a
           href="{{ block.settings.link | default: '/collections/all' }}"
           class="edit-card{% if block.settings.featured %} edit-card--featured{% endif %}"
@@ -25,7 +25,7 @@
             {% if block.settings.image %}
               <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}" loading="lazy" class="edit-card__img">
             {% else %}
-              <img src="https://picsum.photos/{{ fb }}" alt="{{ block.settings.title }}" loading="lazy" class="edit-card__img">
+              <img src="https://picsum.photos/seed/{{ fb }}/800/1066" alt="{{ block.settings.title }}" loading="lazy" class="edit-card__img">
             {% endif %}
           </div>
           <div class="edit-card__overlay"></div>
