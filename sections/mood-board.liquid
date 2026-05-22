@@ -70,6 +70,17 @@
       </div>
 
     </div>
+
+    <!-- BOTTOM: info + CTA -->
+    <div class="mood-board__footer">
+      <p class="mood-board__footer-text">{{ section.settings.footer_text }}</p>
+      {% if section.settings.cta_label != blank %}
+        <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="mood-board__cta">
+          {{ section.settings.cta_label }} ↗
+        </a>
+      {% endif %}
+    </div>
+
   </div>
 </section>
 
@@ -81,7 +92,10 @@
     { "type": "text",     "id": "heading_before",  "label": "Heading — before italic", "default": "Make it" },
     { "type": "text",     "id": "heading_italic",  "label": "Heading — italic word",   "default": "unmistakably" },
     { "type": "text",     "id": "heading_after",   "label": "Heading — after italic",  "default": "yours" },
-    { "type": "textarea", "id": "body",            "label": "Body text",               "default": "Screenshot your favourite Pinterest quotes. Save the memes that made you cry-laugh. Grab the words that just get you. Upload them — and we'll weave them into your Edit. Beautifully designed, perfectly placed." }
+    { "type": "textarea", "id": "body",            "label": "Body text",               "default": "Screenshot your favourite Pinterest quotes. Save the memes that made you cry-laugh. Grab the words that just get you. Upload them — and we'll weave them into your Edit. Beautifully designed, perfectly placed." },
+    { "type": "text",     "id": "footer_text",    "label": "Footer info text",        "default": "Files up to 50MB · Any format · Our designers handle the rest." },
+    { "type": "text",     "id": "cta_label",      "label": "CTA button label",        "default": "Add to my Edit" },
+    { "type": "url",      "id": "cta_link",       "label": "CTA button link",         "default": "/collections/all" }
   ],
   "presets": [{ "name": "Mood Board" }]
 }

@@ -1141,8 +1141,43 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mood-notes__textarea::placeholder { color: rgba(255,255,255,0.25); }
 .mood-notes__textarea:focus { border-color: rgba(255,255,255,0.4); }
 
+.mood-board__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  gap: var(--spacing-md);
+}
+
+.mood-board__footer-text {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.02em;
+}
+
+.mood-board__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  white-space: nowrap;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.mood-board__cta:hover { background: var(--color-gray-light); }
+
 @media (max-width: 768px) {
   .mood-board__boxes { grid-template-columns: 1fr; }
+  .mood-board__footer { flex-direction: column; align-items: flex-start; }
 }
 
 /* ── UPLOAD SECTIONS (standalone page section) ── */
