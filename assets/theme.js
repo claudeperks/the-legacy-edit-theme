@@ -124,6 +124,61 @@
   }
 })();
 
+// ── Mood Board — vibe pills + upload zone ────────────────────────────────────
+(function () {
+  // Vibe pill selection
+  document.querySelectorAll('[data-vibe-group]').forEach(group => {
+    const hidden = document.getElementById('vibe-hidden');
+    group.querySelectorAll('.mood-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        group.querySelectorAll('.mood-pill').forEach(p => p.classList.remove('is-active'));
+        pill.classList.add('is-active');
+        if (hidden) hidden.value = pill.dataset.vibe;
+      });
+    });
+  });
+
+  // Mood upload drag & drop
+  const zone = document.querySelector('[data-mood-zone]');
+  if (zone) {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('is-dragover'); });
+    zone.addEventListener('dragleave', () => { zone.classList.remove('is-dragover'); });
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('is-dragover');
+      const input = zone.querySelector('.mood-upload__input');
+      if (e.dataTransfer?.files?.length && input) {
+        try { const dt = new DataTransfer(); Array.from(e.dataTransfer.files).forEach(f => dt.items.add(f)); input.files = dt.files; } catch(_) {}
+        renderMoodPreviews(input.files);
+      }
+    });
+    const input = zone.querySelector('.mood-upload__input');
+    if (input) input.addEventListener('change', () => renderMoodPreviews(input.files));
+  }
+
+  function renderMoodPreviews(files) {
+    const container = document.getElementById('mood-previews');
+    if (!container) return;
+    container.innerHTML = '';
+    Array.from(files).forEach(file => {
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'aspect-ratio:1;overflow:hidden;background:#1a1a1a;';
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+        const reader = new FileReader();
+        reader.onload = e => { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+        wrap.appendChild(img);
+      } else {
+        wrap.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,0.4);';
+        wrap.textContent = file.name.split('.').pop().toUpperCase();
+      }
+      container.appendChild(wrap);
+    });
+  }
+})();
+
 // Mobile nav
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');

@@ -1,0 +1,95 @@
+<section class="mood-board">
+  <div class="page-width">
+    <div class="mood-board__grid">
+
+      <!-- LEFT: heading + upload -->
+      <div class="mood-board__left">
+        {% if section.settings.eyebrow != blank %}
+          <p class="mood-board__eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+
+        <h2 class="mood-board__heading">
+          {{ section.settings.heading_before }}
+          <em>{{ section.settings.heading_italic }}</em>
+          {{ section.settings.heading_after }}
+        </h2>
+
+        {% if section.settings.body != blank %}
+          <p class="mood-board__body">{{ section.settings.body }}</p>
+        {% endif %}
+
+        <div class="mood-upload">
+          <div class="mood-upload__zone" data-mood-zone>
+            <input
+              type="file"
+              id="mood-upload-input"
+              class="mood-upload__input"
+              name="properties[Inspiration]"
+              multiple
+              accept="image/*,.pdf"
+            >
+            <label for="mood-upload-input" class="mood-upload__label-wrap">
+              <span class="mood-upload__plus" aria-hidden="true">+</span>
+              <span class="mood-upload__prompt">Drop your inspiration here</span>
+              <span class="mood-upload__sub">Pinterest saves, screenshots, quotes, memes — anything that feels like you</span>
+            </label>
+          </div>
+
+          <div class="mood-upload__previews" id="mood-previews"></div>
+
+          <div class="mood-upload__tags">
+            <span class="mood-tag">Pinterest</span>
+            <span class="mood-tag">Screenshots</span>
+            <span class="mood-tag">Quotes</span>
+            <span class="mood-tag">Memes</span>
+            <span class="mood-tag">Any file</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: vibe + notes -->
+      <div class="mood-board__right">
+
+        <div class="mood-vibe">
+          <p class="mood-vibe__label">Your vibe</p>
+          <div class="mood-vibe__pills" data-vibe-group>
+            {%- assign vibes = 'Romantic,Nostalgic,Funny,Bold,Minimal,Heartfelt,Chaotic,Soft,Timeless,Playful' | split: ',' -%}
+            {% for vibe in vibes %}
+              <button
+                type="button"
+                class="mood-pill{% if forloop.first %} is-active{% endif %}"
+                data-vibe="{{ vibe }}"
+              >{{ vibe }}</button>
+            {% endfor %}
+          </div>
+          <input type="hidden" name="properties[Vibe]" id="vibe-hidden" value="Romantic">
+        </div>
+
+        <div class="mood-notes">
+          <p class="mood-notes__label">Tell us more</p>
+          <textarea
+            class="mood-notes__textarea"
+            name="properties[Notes]"
+            placeholder="Describe the feeling you want — our designers will take it from here..."
+            rows="5"
+          ></textarea>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mood Board",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",         "label": "Eyebrow",          "default": "The mood board" },
+    { "type": "text",     "id": "heading_before",  "label": "Heading — before italic", "default": "Make it" },
+    { "type": "text",     "id": "heading_italic",  "label": "Heading — italic word",   "default": "unmistakably" },
+    { "type": "text",     "id": "heading_after",   "label": "Heading — after italic",  "default": "yours" },
+    { "type": "textarea", "id": "body",            "label": "Body text",        "default": "Screenshot your favourite Pinterest quotes. Save the memes that made you cry-laugh. Grab the words that just get you. Upload them — and we'll weave them into your Edit. Beautifully designed, perfectly placed." }
+  ],
+  "presets": [{ "name": "Mood Board" }]
+}
+{% endschema %}

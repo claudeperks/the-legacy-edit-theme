@@ -78,6 +78,16 @@
       },
       "block_order": ["wedding", "family", "party", "travel", "milestone", "everyday"]
     },
+    "mood-board": {
+      "type": "mood-board",
+      "settings": {
+        "eyebrow": "The mood board",
+        "heading_before": "Make it",
+        "heading_italic": "unmistakably",
+        "heading_after": "yours",
+        "body": "Screenshot your favourite Pinterest quotes. Save the memes that made you cry-laugh. Grab the words that just get you. Upload them — and we'll weave them into your Edit. Beautifully designed, perfectly placed."
+      }
+    },
     "marquee": {
       "type": "marquee",
       "blocks": {
@@ -112,6 +122,7 @@
   "order": [
     "hero",
     "edit-picker",
+    "mood-board",
     "marquee",
     "testimonials",
     "newsletter"

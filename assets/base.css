@@ -937,6 +937,204 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .edit-picker__grid { grid-template-columns: 1fr; }
 }
 
+/* ── MOOD BOARD ── */
+.mood-board {
+  background: #0d0d0d;
+  color: var(--color-white);
+  padding: var(--spacing-2xl) 0;
+}
+
+.mood-board__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+.mood-board__eyebrow {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--spacing-md);
+}
+
+.mood-board__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-white);
+}
+
+.mood-board__heading em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.mood-board__body {
+  font-size: var(--font-size-sm);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: var(--spacing-lg);
+  max-width: 460px;
+}
+
+/* Upload zone */
+.mood-upload__zone {
+  position: relative;
+  border: 1px dashed rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.03);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mood-upload__zone:hover,
+.mood-upload__zone.is-dragover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.06);
+}
+
+.mood-upload__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.mood-upload__label-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: var(--spacing-lg);
+  cursor: pointer;
+}
+
+.mood-upload__plus {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.mood-upload__prompt {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.mood-upload__sub {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.4);
+  max-width: 260px;
+  line-height: 1.5;
+}
+
+.mood-upload__previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 6px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mood-upload__previews:empty { display: none; }
+
+.mood-upload__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-sm);
+}
+
+.mood-tag {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  letter-spacing: 0.02em;
+}
+
+/* Vibe pills */
+.mood-vibe__label,
+.mood-notes__label {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+}
+
+.mood-vibe__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.mood-pill {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-body);
+  color: rgba(255,255,255,0.55);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.mood-pill:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: var(--color-white);
+}
+
+.mood-pill.is-active {
+  background: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+/* Notes textarea */
+.mood-notes__textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  padding: var(--spacing-sm);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.mood-notes__textarea::placeholder { color: rgba(255,255,255,0.25); }
+.mood-notes__textarea:focus { border-color: rgba(255,255,255,0.4); }
+
+@media (max-width: 768px) {
+  .mood-board__grid { grid-template-columns: 1fr; gap: var(--spacing-xl); }
+}
+
 /* ── UPLOAD SECTIONS (standalone page section) ── */
 .upload-sections__intro {
   text-align: center;
