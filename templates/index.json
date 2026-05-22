@@ -146,6 +146,20 @@
       "block_order": ["t1", "t2", "t3"],
       "settings": { "title": "What Our Readers Say" }
     },
+    "pricing": {
+      "type": "pricing",
+      "settings": {
+        "eyebrow": "Pricing",
+        "heading": "Simple, honest pricing",
+        "subheading": "Every Edit includes mood board design. No hidden extras."
+      },
+      "blocks": {
+        "p1": { "type": "plan", "settings": { "label": "The Single Edit",  "price": "£149", "description": "One beautifully designed volume",              "features": "Up to 80 pages,Mood board included,Digital proof",             "btn_label": "Select", "featured": false } },
+        "p2": { "type": "plan", "settings": { "badge": "Most Popular", "label": "The Collection",  "price": "£399", "description": "Three Edits, beautifully boxed together",        "features": "Up to 240 pages total,Mood board on every Edit,Luxury gift box","btn_label": "Select", "featured": true  } },
+        "p3": { "type": "plan", "settings": { "label": "The Full Library", "price": "£899", "description": "The complete Legacy Edit — all volumes",        "features": "All 12 Edits,Dedicated designer,Concierge delivery",            "btn_label": "Select", "featured": false } }
+      },
+      "block_order": ["p1","p2","p3"]
+    },
     "quote-banner": {
       "type": "quote-banner",
       "settings": {
@@ -172,6 +186,7 @@
     "difference",
     "how-it-works",
     "quote-banner",
+    "pricing",
     "marquee",
     "testimonials",
     "newsletter"

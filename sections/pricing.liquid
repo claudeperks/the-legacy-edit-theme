@@ -1,0 +1,112 @@
+<section class="pricing section">
+  <div class="page-width">
+
+    <div class="pricing__intro">
+      {% if section.settings.eyebrow != blank %}
+        <p class="pricing__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="pricing__heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="pricing__sub">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="pricing__grid">
+      {% for block in section.blocks %}
+        <div class="price-card{% if block.settings.featured %} price-card--featured{% endif %}" {{ block.shopify_attributes }}>
+
+          {% if block.settings.badge != blank %}
+            <p class="price-card__badge">{{ block.settings.badge }}</p>
+          {% endif %}
+
+          <p class="price-card__label">{{ block.settings.label }}</p>
+          <p class="price-card__price">{{ block.settings.price }}</p>
+          <p class="price-card__desc">{{ block.settings.description }}</p>
+
+          {% if block.settings.features != blank %}
+            <ul class="price-card__features">
+              {%- assign feature_list = block.settings.features | split: ',' -%}
+              {% for feature in feature_list %}
+                <li>{{ feature | strip }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          <a href="{{ block.settings.link | default: '/collections/all' }}" class="price-card__btn">
+            {{ block.settings.btn_label | default: 'Select' }}
+          </a>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pricing",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",    "label": "Eyebrow",    "default": "Pricing" },
+    { "type": "text",     "id": "heading",    "label": "Heading",    "default": "Simple, honest pricing" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Every Edit includes mood board design. No hidden extras." }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Pricing Plan",
+      "settings": [
+        { "type": "text",     "id": "badge",       "label": "Badge (e.g. Most Popular)" },
+        { "type": "text",     "id": "label",       "label": "Plan name",      "default": "The Single Edit" },
+        { "type": "text",     "id": "price",       "label": "Price",          "default": "£149" },
+        { "type": "text",     "id": "description", "label": "Description",    "default": "One beautifully designed volume" },
+        { "type": "textarea","id": "features",     "label": "Features (comma separated)", "default": "Up to 80 pages,Mood board included,Digital proof" },
+        { "type": "text",     "id": "btn_label",   "label": "Button label",   "default": "Select" },
+        { "type": "url",      "id": "link",        "label": "Button link" },
+        { "type": "checkbox", "id": "featured",    "label": "Featured (black card)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing",
+      "blocks": [
+        {
+          "type": "plan",
+          "settings": {
+            "label": "The Single Edit",
+            "price": "£149",
+            "description": "One beautifully designed volume",
+            "features": "Up to 80 pages,Mood board included,Digital proof",
+            "btn_label": "Select",
+            "featured": false
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "badge": "Most Popular",
+            "label": "The Collection",
+            "price": "£399",
+            "description": "Three Edits, beautifully boxed together",
+            "features": "Up to 240 pages total,Mood board on every Edit,Luxury gift box",
+            "btn_label": "Select",
+            "featured": true
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "label": "The Full Library",
+            "price": "£899",
+            "description": "The complete Legacy Edit — all volumes",
+            "features": "All 12 Edits,Dedicated designer,Concierge delivery",
+            "btn_label": "Select",
+            "featured": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
