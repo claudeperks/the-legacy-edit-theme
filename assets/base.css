@@ -9,6 +9,7 @@
   --color-cream: #f8f7f4;
   --color-text: #111111;
   --color-text-muted: #666666;
+  --color-border: #c8c8c8;
   --font-body: 'Inter', sans-serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-size-xs: 0.6875rem;
@@ -909,7 +910,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .custom-field__input,
 .custom-field__textarea {
   width: 100%;
-  border: 1px solid var(--color-border);
+  border: 1.5px solid #b0b0b0;
   background: var(--color-white);
   padding: 10px 12px;
   font-family: var(--font-body);
