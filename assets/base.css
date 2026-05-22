@@ -944,11 +944,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: var(--spacing-2xl) 0;
 }
 
-.mood-board__grid {
+.mood-board__top {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mood-board__boxes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-lg);
   align-items: start;
+}
+
+.mood-board__box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .mood-board__eyebrow {
@@ -1132,7 +1142,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mood-notes__textarea:focus { border-color: rgba(255,255,255,0.4); }
 
 @media (max-width: 768px) {
-  .mood-board__grid { grid-template-columns: 1fr; gap: var(--spacing-xl); }
+  .mood-board__boxes { grid-template-columns: 1fr; }
 }
 
 /* ── UPLOAD SECTIONS (standalone page section) ── */
