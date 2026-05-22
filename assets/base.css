@@ -845,11 +845,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── EDIT PICKER ── */
 .edit-picker {
   background: var(--color-white);
-  padding: var(--spacing-xl) 0 var(--spacing-2xl);
-}
-
-.edit-picker__inner {
-  padding: 0 var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl);
 }
 
 .edit-picker__intro {
