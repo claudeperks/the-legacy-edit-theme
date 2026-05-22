@@ -283,17 +283,32 @@
     }
   })();
 
-  // Auto-fill Title + Subtitle from edit card selection (saved in localStorage by theme.js)
+  // Auto-fill Title from edit card — reads URL hash (#edit=...) OR localStorage
   (function() {
-    var editTitle    = localStorage.getItem('legacy_selected_edit_title');
-    var editSubtitle = localStorage.getItem('legacy_selected_edit_subtitle');
-    if (editTitle) {
-      localStorage.removeItem('legacy_selected_edit_title');
-      localStorage.removeItem('legacy_selected_edit_subtitle');
+    var title = '';
+    var subtitle = '';
+
+    // Source 1: URL hash  e.g. #edit=The%20Wedding%20Edit
+    var hash = window.location.hash;
+    if (hash.indexOf('#edit=') === 0) {
+      title = decodeURIComponent(hash.slice(6));
+    }
+
+    // Source 2: localStorage (set by theme.js click handler)
+    if (!title) {
+      title    = localStorage.getItem('legacy_selected_edit_title') || '';
+      subtitle = localStorage.getItem('legacy_selected_edit_subtitle') || '';
+      if (title) {
+        localStorage.removeItem('legacy_selected_edit_title');
+        localStorage.removeItem('legacy_selected_edit_subtitle');
+      }
+    }
+
+    if (title) {
       var t = document.getElementById('custom-title');
       var s = document.getElementById('custom-subtitle');
-      if (t && !t.value) t.value = editTitle;
-      if (s && !s.value && editSubtitle) s.value = editSubtitle;
+      if (t && !t.value) t.value = title;
+      if (s && !s.value && subtitle) s.value = subtitle;
     }
   })();
 
