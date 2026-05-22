@@ -871,6 +871,101 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .option-btn:hover { border-color: var(--color-black); }
 .option-btn.is-active { border-color: var(--color-black); background: var(--color-black); color: var(--color-white); }
 
+/* ── PRODUCT CUSTOMIZATION ── */
+.product-customization {
+  margin: 1.5rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.product-customization__heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: 1.25rem;
+}
+
+.custom-field { margin-bottom: 1.1rem; }
+
+.custom-field__label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: 0.45rem;
+}
+
+.custom-field__hint {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.custom-field__input,
+.custom-field__textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+  resize: vertical;
+}
+.custom-field__input:focus,
+.custom-field__textarea:focus { border-color: var(--color-black); }
+.custom-field__input::placeholder,
+.custom-field__textarea::placeholder { color: var(--color-text-muted); }
+
+/* Linen Swatches */
+.linen-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.swatch-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.swatch-option input[type="radio"] { display: none; }
+
+.swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px #ddd;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  display: block;
+}
+
+.swatch-option input[type="radio"]:checked + .swatch {
+  box-shadow: 0 0 0 2px var(--color-black);
+  border-color: white;
+}
+
+.swatch-option:hover .swatch { box-shadow: 0 0 0 2px #999; }
+
+.swatch-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
 /* Upload zones */
 .product-info__uploads {
   margin: 1.25rem 0;
