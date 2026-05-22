@@ -146,6 +146,15 @@
       "block_order": ["t1", "t2", "t3"],
       "settings": { "title": "What Our Readers Say" }
     },
+    "quote-banner": {
+      "type": "quote-banner",
+      "settings": {
+        "quote_before": "\"This is the part that makes people ",
+        "quote_italic": "cry",
+        "quote_after": " when they open it.\"",
+        "attribution": "The Legacy Edit Team"
+      }
+    },
     "newsletter": {
       "type": "newsletter",
       "settings": {
@@ -162,6 +171,7 @@
     "mood-board",
     "difference",
     "how-it-works",
+    "quote-banner",
     "marquee",
     "testimonials",
     "newsletter"

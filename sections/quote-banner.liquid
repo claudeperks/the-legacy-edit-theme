@@ -1,0 +1,23 @@
+<section class="quote-banner">
+  <div class="page-width">
+    <blockquote class="quote-banner__quote">
+      {{ section.settings.quote_before }}<em>{{ section.settings.quote_italic }}</em>{{ section.settings.quote_after }}
+    </blockquote>
+    {% if section.settings.attribution != blank %}
+      <p class="quote-banner__attr">— {{ section.settings.attribution }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quote Banner",
+  "settings": [
+    { "type": "textarea", "id": "quote_before",  "label": "Quote — before italic", "default": "\"This is the part that makes people " },
+    { "type": "text",     "id": "quote_italic",  "label": "Quote — italic word",   "default": "cry" },
+    { "type": "textarea", "id": "quote_after",   "label": "Quote — after italic",  "default": " when they open it.\"" },
+    { "type": "text",     "id": "attribution",   "label": "Attribution",           "default": "The Legacy Edit Team" }
+  ],
+  "presets": [{ "name": "Quote Banner" }]
+}
+{% endschema %}

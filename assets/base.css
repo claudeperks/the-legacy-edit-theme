@@ -1405,6 +1405,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .how-it-works__steps { grid-template-columns: 1fr; }
 }
 
+/* ── QUOTE BANNER ── */
+.quote-banner {
+  background: #0d0d0d;
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+}
+
+.quote-banner__quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2.25rem);
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  max-width: 720px;
+  margin: 0 auto var(--spacing-sm);
+}
+
+.quote-banner__quote em {
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+}
+
+.quote-banner__attr {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 /* ── UPLOAD SECTIONS (standalone page section) ── */
 .upload-sections__intro {
   text-align: center;
