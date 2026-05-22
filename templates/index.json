@@ -187,19 +187,35 @@
         "placeholder": "Your email address",
         "button": "Subscribe"
       }
+    },
+    "sample-spreads": {
+      "type": "sample-spreads",
+      "settings": {
+        "eyebrow": "The work",
+        "heading": "See inside an Edit",
+        "subheading": "Every page is designed by hand. Here's what that looks like."
+      },
+      "blocks": {
+        "sp1": { "type": "spread", "settings": { "tag": "Wedding Edit",   "caption": "The ceremony, beautifully composed", "featured": true  } },
+        "sp2": { "type": "spread", "settings": { "tag": "Family Edit",    "caption": "Generations in one place",           "featured": false } },
+        "sp3": { "type": "spread", "settings": { "tag": "Travel Edit",    "caption": "Adventures that shaped you",         "featured": false } },
+        "sp4": { "type": "spread", "settings": { "tag": "Milestone Edit", "caption": "Achievements along the way",         "featured": false } }
+      },
+      "block_order": ["sp1", "sp2", "sp3", "sp4"]
     }
   },
   "order": [
     "hero",
+    "marquee",
     "edit-picker",
+    "sample-spreads",
     "mood-board",
-    "difference",
     "how-it-works",
+    "difference",
+    "testimonials",
     "quote-banner",
     "pricing",
     "cta-banner",
-    "marquee",
-    "testimonials",
     "newsletter"
   ]
 }
