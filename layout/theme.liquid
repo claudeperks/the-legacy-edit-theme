@@ -46,14 +46,14 @@
         }
       });
 
-      // On product page: read hash and fill Title field
+      // On product page: read hash and update the page heading
       if (window.location.pathname.indexOf('/products/') !== -1) {
         var hash = window.location.hash;
         if (hash.indexOf('#edit=') === 0) {
           var editTitle = decodeURIComponent(hash.slice(6));
           function doFill() {
-            var t = document.getElementById('custom-title');
-            if (t && !t.value) t.value = editTitle;
+            var h1 = document.querySelector('.product-info__title');
+            if (h1) h1.textContent = editTitle;
           }
           if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', doFill);

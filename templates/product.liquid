@@ -305,10 +305,8 @@
     }
 
     if (title) {
-      var t = document.getElementById('custom-title');
-      var s = document.getElementById('custom-subtitle');
-      if (t && !t.value) t.value = title;
-      if (s && !s.value && subtitle) s.value = subtitle;
+      var h1 = document.querySelector('.product-info__title');
+      if (h1) h1.textContent = title;
     }
   })();
 
