@@ -1591,7 +1591,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── CTA BANNER ── */
 .cta-banner {
   background: var(--color-gray-light);
-  padding: var(--spacing-2xl) 0;
+  padding: 100px 0;
 }
 
 .cta-banner__inner {
