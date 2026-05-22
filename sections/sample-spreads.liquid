@@ -1,4 +1,4 @@
-{% assign spread_imgs = 'spread1/1200/900,spread2/800/600,spread3/800/600,spread4/800/600' | split: ',' %}
+{% assign spread_imgs = '100/1200/900,200/800/600,300/800/600,400/800/600' | split: ',' %}
 
 <section class="sample-spreads section">
   <div class="page-width">
@@ -22,7 +22,7 @@
               {{ block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'spread-card__img', alt: block.settings.caption }}
             {% else %}
               <img
-                src="https://picsum.photos/seed/{{ fb_spread }}"
+                src="https://picsum.photos/{{ fb_spread }}"
                 alt="{{ block.settings.caption | default: block.settings.tag }}"
                 loading="lazy"
                 class="spread-card__img"
