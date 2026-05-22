@@ -1,0 +1,66 @@
+<section class="edit-picker section--sm">
+  <div class="page-width">
+
+    <div class="edit-picker__intro">
+      {% if section.settings.eyebrow != blank %}
+        <p class="edit-picker__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="edit-picker__heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="edit-picker__sub">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="edit-picker__grid">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.link | default: '/collections/all' }}"
+          class="edit-card{% if block.settings.featured %} edit-card--featured{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="edit-card__title">{{ block.settings.title }}</span>
+          {% if block.settings.subtitle != blank %}
+            <span class="edit-card__subtitle">{{ block.settings.subtitle }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Edit Picker",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",    "label": "Eyebrow",    "default": "The collection" },
+    { "type": "text",     "id": "heading",    "label": "Heading",    "default": "Choose your Edit" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Each Edit is its own volume. Together, they tell a whole life." }
+  ],
+  "blocks": [
+    {
+      "type": "edit",
+      "name": "Edit Card",
+      "settings": [
+        { "type": "text",     "id": "title",    "label": "Title",       "default": "The Wedding Edit" },
+        { "type": "text",     "id": "subtitle", "label": "Subtitle",    "default": "The big day, beautifully told" },
+        { "type": "url",      "id": "link",     "label": "Link" },
+        { "type": "checkbox", "id": "featured", "label": "Featured (black card)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Edit Picker",
+      "blocks": [
+        { "type": "edit", "settings": { "title": "The Wedding Edit",   "subtitle": "The big day, beautifully told",      "featured": true  } },
+        { "type": "edit", "settings": { "title": "The Family Edit",    "subtitle": "The people who ground you",          "featured": false } },
+        { "type": "edit", "settings": { "title": "The Party Edit",     "subtitle": "Celebrations worth remembering",     "featured": false } },
+        { "type": "edit", "settings": { "title": "The Travel Edit",    "subtitle": "Adventures that shaped you",         "featured": false } },
+        { "type": "edit", "settings": { "title": "The Milestone Edit", "subtitle": "Achievements along the way",         "featured": false } },
+        { "type": "edit", "settings": { "title": "The Everyday Edit",  "subtitle": "The quiet moments that matter",      "featured": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

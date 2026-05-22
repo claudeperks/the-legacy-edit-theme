@@ -842,6 +842,98 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: var(--spacing-lg);
 }
 
+/* ── EDIT PICKER ── */
+.edit-picker { background: var(--color-white); }
+
+.edit-picker__intro {
+  margin-bottom: var(--spacing-lg);
+}
+
+.edit-picker__eyebrow {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.edit-picker__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: var(--color-black);
+}
+
+.edit-picker__sub {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.edit-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.edit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--spacing-md) var(--spacing-md);
+  border: 1px solid var(--color-gray-mid);
+  background: var(--color-white);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  min-height: 90px;
+  justify-content: center;
+}
+
+.edit-card:hover {
+  border-color: var(--color-black);
+}
+
+.edit-card--featured {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.edit-card--featured:hover {
+  background: var(--color-gray-dark);
+  border-color: var(--color-gray-dark);
+}
+
+.edit-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.edit-card__subtitle {
+  font-size: var(--font-size-xs);
+  opacity: 0.55;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.edit-card--featured .edit-card__subtitle {
+  opacity: 0.65;
+}
+
+@media (max-width: 768px) {
+  .edit-picker__grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
+@media (max-width: 480px) {
+  .edit-picker__grid { grid-template-columns: 1fr; }
+}
+
 /* ── UPLOAD SECTIONS (standalone page section) ── */
 .upload-sections__intro {
   text-align: center;
