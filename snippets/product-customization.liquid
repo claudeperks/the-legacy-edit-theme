@@ -123,8 +123,10 @@
   };
 
   function autoFill() {
-    // 1. Fill from URL ?edit= param
-    var editKey = new URLSearchParams(window.location.search).get('edit');
+    // 1. Fill from URL ?edit= param OR sessionStorage (whichever has a value)
+    var editKey = new URLSearchParams(window.location.search).get('edit')
+                  || sessionStorage.getItem('legacy_edit_key');
+    sessionStorage.removeItem('legacy_edit_key'); // clear after reading
     if (editKey && editMap[editKey]) {
       var titleInput    = document.getElementById('custom-title');
       var subtitleInput = document.getElementById('custom-subtitle');

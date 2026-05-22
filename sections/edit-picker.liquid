@@ -17,8 +17,9 @@
       {% for block in section.blocks %}
         {% assign fb = fallback_seeds[forloop.index0] %}
         <a
-          href="{{ block.settings.link | default: '/products/the-legacy-edit-custom-photo-book' }}{% if block.settings.edit_key != blank %}?edit={{ block.settings.edit_key }}{% endif %}"
+          href="/products/the-legacy-edit-custom-photo-book{% if block.settings.edit_key != blank %}?edit={{ block.settings.edit_key }}{% endif %}"
           class="edit-card{% if block.settings.featured %} edit-card--featured{% endif %}"
+          data-edit-key="{{ block.settings.edit_key }}"
           {{ block.shopify_attributes }}
         >
           <div class="edit-card__img-wrap">
@@ -42,6 +43,15 @@
 
   </div>
 </section>
+
+<script>
+document.querySelectorAll('.edit-card[data-edit-key]').forEach(function(card) {
+  card.addEventListener('click', function() {
+    var key = card.dataset.editKey;
+    if (key) sessionStorage.setItem('legacy_edit_key', key);
+  });
+});
+</script>
 
 {% schema %}
 {
