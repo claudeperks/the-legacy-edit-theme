@@ -84,6 +84,47 @@
   </div>
 </section>
 
+<script>
+(function() {
+  function initMoodBoardSync() {
+    // Restore saved vibe
+    var savedVibe = localStorage.getItem('legacy_vibe');
+    if (savedVibe) {
+      document.querySelectorAll('[data-vibe-group] .mood-pill').forEach(function(p) {
+        p.classList.toggle('is-active', p.dataset.vibe === savedVibe);
+      });
+      var vh = document.getElementById('vibe-hidden');
+      if (vh) vh.value = savedVibe;
+    }
+
+    // Restore saved notes
+    var savedNotes = localStorage.getItem('legacy_notes');
+    var notesTA = document.querySelector('.mood-notes__textarea');
+    if (notesTA && savedNotes) notesTA.value = savedNotes;
+
+    // Save vibe on click
+    document.querySelectorAll('[data-vibe-group] .mood-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        localStorage.setItem('legacy_vibe', pill.dataset.vibe);
+      });
+    });
+
+    // Save notes on input
+    if (notesTA) {
+      notesTA.addEventListener('input', function() {
+        localStorage.setItem('legacy_notes', notesTA.value);
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMoodBoardSync);
+  } else {
+    initMoodBoardSync();
+  }
+})();
+</script>
+
 {% schema %}
 {
   "name": "Mood Board",

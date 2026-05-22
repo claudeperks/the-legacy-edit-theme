@@ -926,6 +926,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .custom-field__input::placeholder,
 .custom-field__textarea::placeholder { color: var(--color-text-muted); }
 
+/* Vibe auto-fill */
+.vibe-autofill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.vibe-autofill__pill {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.vibe-autofill__clear {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  padding: 0;
+}
+.vibe-autofill__clear:hover { color: var(--color-black); }
+
 /* Linen Swatches */
 .linen-swatches {
   display: flex;

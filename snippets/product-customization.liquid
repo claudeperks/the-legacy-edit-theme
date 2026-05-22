@@ -52,6 +52,19 @@
     ></textarea>
   </div>
 
+  <!-- Your Vibe (auto-filled from mood board) -->
+  <div class="custom-field" id="vibe-field" style="display:none;">
+    <label class="custom-field__label">
+      Your Vibe
+      <span class="custom-field__hint">Saved from your mood board</span>
+    </label>
+    <div class="vibe-autofill">
+      <span class="vibe-autofill__pill" id="vibe-autofill-display"></span>
+      <button type="button" class="vibe-autofill__clear" id="vibe-autofill-clear">✕ Clear</button>
+    </div>
+    <input type="hidden" name="properties[Vibe]" id="custom-vibe-value">
+  </div>
+
   <!-- Linen Color -->
   <div class="custom-field">
     <label class="custom-field__label">Linen Color</label>
@@ -97,3 +110,43 @@
   </div>
 
 </div>
+
+<script>
+(function() {
+  function autoFillFromMoodBoard() {
+    var savedVibe  = localStorage.getItem('legacy_vibe');
+    var savedNotes = localStorage.getItem('legacy_notes');
+
+    if (savedNotes) {
+      var memo = document.getElementById('custom-memo');
+      if (memo && !memo.value) memo.value = savedNotes;
+    }
+
+    if (savedVibe) {
+      var field   = document.getElementById('vibe-field');
+      var display = document.getElementById('vibe-autofill-display');
+      var hidden  = document.getElementById('custom-vibe-value');
+      if (field)   field.style.display = '';
+      if (display) display.textContent = savedVibe;
+      if (hidden)  hidden.value = savedVibe;
+    }
+
+    var clearBtn = document.getElementById('vibe-autofill-clear');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function() {
+        localStorage.removeItem('legacy_vibe');
+        var f = document.getElementById('vibe-field');
+        if (f) f.style.display = 'none';
+        var h = document.getElementById('custom-vibe-value');
+        if (h) h.value = '';
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoFillFromMoodBoard);
+  } else {
+    autoFillFromMoodBoard();
+  }
+})();
+</script>
